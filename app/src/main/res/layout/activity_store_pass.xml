@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#3A3A3A"
     android:padding="20dp">
 
     <LinearLayout
-        android:id="@+id/login_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
@@ -17,20 +17,19 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="5dp"
-            android:text="@string/login_text"
+            android:text=""
             android:textColor="@color/very_light_grey"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/username_login_text"
+            android:id="@+id/enter_site_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:background="@android:color/transparent"
             android:gravity="center_vertical"
-            android:hint="@string/username_hint"
-            android:inputType="textPersonName"
+            android:hint="Website/App Name"
             android:padding="10dp"
             android:singleLine="true"
             android:textColor="@color/white"
@@ -43,70 +42,42 @@
             android:background="@color/very_light_grey" />
 
         <EditText
-            android:id="@+id/password_login_text"
+            android:id="@+id/enter_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
             android:background="@android:color/transparent"
             android:gravity="center_vertical"
-            android:hint="@string/password_hint"
-            android:inputType="textPassword"
+            android:hint="Enter Password"
             android:padding="10dp"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="16sp" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="5dp">
-
-            <CheckBox
-                android:id="@+id/show_hide_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/show_password_text"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:onClick="checkBoxClicked"/>
-
-            <TextView
-                android:id="@+id/forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:padding="5dp"
-                android:text="@string/forgot_password_text"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-        </LinearLayout>
-
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/suggest_password_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:padding="3dp"
-            android:text="@string/login_button_text"
+            android:text="Suggest Password"
             android:textColor="#012222"
             android:textSize="17sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/add_password_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:padding="3dp"
+            android:text="Store Password"
+            android:textColor="#012222"
+            android:textSize="17sp"
+            android:textStyle="bold"  />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/login_screen_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/new_user_text"
-        android:textColor="#B2EBF2"
-        android:textSize="15sp" />
+
 </RelativeLayout>
