@@ -18,17 +18,17 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
     private CheckBox showPassword;
     private TextView signUp;
-    LoginDatabaseHelper helper = new LoginDatabaseHelper(this);
+    StorageDatabaseHelper helper = new StorageDatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        login = (Button) findViewById(R.id.login_button);
-        username = (EditText) findViewById(R.id.username_login_text);
-        password = (EditText) findViewById(R.id.password_login_text);
-        showPassword = (CheckBox) findViewById(R.id.show_hide_password);
-        signUp = (TextView) findViewById(R.id.login_screen_sign_up);
+        login = findViewById(R.id.login_button);
+        username = findViewById(R.id.username_login_text);
+        password = findViewById(R.id.password_login_text);
+        showPassword = findViewById(R.id.show_hide_password);
+        signUp = findViewById(R.id.login_screen_sign_up);
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -42,26 +42,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SignUpScreenActivity.class);
+                finish();
+                overridePendingTransition(0,0);
                 startActivity(intent);
             }
         });
-
-
     }
 
     public void validateLogin(String username, String password){
-        String pass = helper.searchPass(username);
-        if (pass.equals(password)){
+        if (helper.checkPass(username, password)){
+            int id = helper.getAccountID(username);
             Intent intent = new Intent(MainActivity.this, StorePasswordActivity.class);
+            intent.putExtra("account_id", id);
+            finish();
+            overridePendingTransition(0,0);
             startActivity(intent);
         }
         else{
-            Toast toast = Toast.makeText(MainActivity.this, "Username and password don't match", Toast.LENGTH_SHORT);
-            toast.show();
+            Toast.makeText(MainActivity.this, "Username and password don't match", Toast.LENGTH_SHORT).show();
         }
     }
 
-    //After changing back, the password format looks different
     public void checkBoxClicked(View view) {
         if (showPassword.isChecked()){
             password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);

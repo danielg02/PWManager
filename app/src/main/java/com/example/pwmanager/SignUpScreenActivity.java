@@ -21,7 +21,7 @@ public class SignUpScreenActivity extends AppCompatActivity {
     private CheckBox showPassword;
     private TextView alreadyRegistered;
     private EditText email;
-    LoginDatabaseHelper helper = new LoginDatabaseHelper(this);
+    StorageDatabaseHelper helper = new StorageDatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,8 @@ public class SignUpScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpScreenActivity.this, MainActivity.class);
+                finish();
+                overridePendingTransition(0,0);
                 startActivity(intent);
             }
         });
@@ -81,8 +83,10 @@ public class SignUpScreenActivity extends AppCompatActivity {
             c.setEmail(email);
             c.setUsername(username);
             c.setPassword(pass);
-            helper.insertAccount(c);
+            helper.insertLogin(c);
             Intent intent = new Intent(SignUpScreenActivity.this, MainActivity.class);
+            finish();
+            overridePendingTransition(0,0);
             startActivity(intent);
         }
 
